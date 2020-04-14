@@ -1,59 +1,27 @@
-class User:
-	def __init__(self, number = '', name = '', age = '', phone = '', balance = ''):
-		self.number = number
-		self.name = name
-		self.age = age
-		self.phone = phone
-		self.balance = balance
+from model.user import User
+from controller.account import Account
+from library.file import File
 
-	def create(self):
-		if( (self.number) in account.keys()):
-			return False
-		else:
-			account[self.number] = {
-				'number' : self.number,
-				'name' : self.name,
-				'age' : self.age,
-				'phone' : self.phone,
-				'balance' : self.balance
-			}
-			return True
+def main():
+	while(1):
+		print('Press,\n1 - to show user\n2 - to create user\n3 - to edit user\n0 to exit')
+		action = input("Action number is: ")
 
-	def edit(self):
-		pass
-
-	def show(self, accNumber):
-		if(accNumber in account.keys()):
-			return account[accNumber]
-		else:
-			return "\nAccount is not found\n"
-
-accountFields = ['number', 'name', 'age', 'phone', 'balance']
-accountdata = {}
-account = {}
-
-while(1):
-	print('Press,\n1 - to show user\n2 - to create user\n3 - to edit user\n0 to exit')
-	action = input("Action number is: ")
-
-		# Create new Account
-	if(action == '1'):
-		user = User()
-		print(user.show(input("Enter user account number: ")))
-
-	elif(action == '2'):
-		for n in range(len(accountFields)):
-			accountdata[accountFields[n]] = input("Account " + accountFields[n] + ": ")
+			# Create new Account
+		if(action == '1'):
+			Account.show()
 			
-		user = User(accountdata['number'], accountdata['name'], accountdata['age'], accountdata['phone'], accountdata['balance'])
-		
-		if(user.create() == True):
-			print("\nNew User created.\n")
+		elif(action == '2'):
+			user = User()
+			user.get()							# input user data
+			Account.create(user) 		# Create a new account
+			
+			# Exit
 		else:
-			print("\nUser is already exists\n")
+			break
 
-		# Exit
-	else:
-		break
+	print("Thanks.")
 
-print("Thanks.")
+
+if(__name__ == '__main__'):
+	main()
