@@ -6,6 +6,10 @@ from model.user import User
  """
 class Account:
 
+	@staticmethod
+	def all():
+		return File.read('table/accountTable')
+
 	""" 
 		Create new Account
 	 """
@@ -13,7 +17,7 @@ class Account:
 	def create(user):
 		account = File.read('table/accountTable')
 
-		if( (user.getNumber()) in account.keys()):
+		if( (user.getNumber()) in account):
 			print("\nUser is already exists\n")
 			return False
 		else:
@@ -30,21 +34,40 @@ class Account:
 			print("\nNew Account has been created successfully.\n")
 			return True
 
-	""" 
-		Edit existing account
-	 """
-	def edit(self):
-		pass
+	
+		# Edit existing account
+	
+	@staticmethod
+	def edit(user):
+		account = File.read('table/accountTable')
 
-	""" 
-		Show a single Account
-	 """
+		if( user.getNumber() in account):
+			if(user.getName()):
+				account[user.getNumber()]['name'] = user.getName()
+			if(user.getAge()):
+				account[user.getNumber()]['age'] = user.getAge()
+			if(user.getPhone()):
+				account[user.getNumber()]['phone'] = user.getPhone()
+			if(user.getBalance()):
+				account[user.getNumber()]['balance'] = user.getBalance()
+
+			File.write('table/accountTable', account)
+
+			print("\nAccount has been updated successfully.\n")
+			return True
+		else:
+			print("\nAccount is not exists.\n")
+			return False
+
+	
+		# Show a single Account
+	
 	@staticmethod
 	def show():
 		accNumber = input("Enter account Number: ")
 		account = File.read('table/accountTable')
 
-		if(accNumber in account.keys()):
+		if(accNumber in account):
 			print("\n")
 			Account.viewSingle(account[accNumber])
 		else:
@@ -53,12 +76,22 @@ class Account:
 	""" 
 		Delete an existing account
 	 """
-	def delete(self):
-		pass
+	@staticmethod
+	def delete(number):
+		account = File.read('table/accountTable')
+	
+		if(number in account):
+			del account[number]
+			File.write('table/accountTable', account)
+			print('Account number ' + number + " is deleted successfully.")
+			return True
 
-	""" 
-		View Single account details
-	 """
+		else:
+			print("Account number is not registred.")
+			return False
+
+		# View Single account details
+	
 	@staticmethod
 	def viewSingle(acc):
 		user = User()
