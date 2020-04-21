@@ -1,10 +1,16 @@
 from library.file import File
 from model.user import User
+from model.Models import Models
 
 """ 
 	Account Management
  """
-class Account:
+class Account(Models):
+
+	table = "table/accountTable"
+
+	def __init__(self):
+		super().__init__(self.table, 'Account')
 
 	@staticmethod
 	def all():

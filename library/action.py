@@ -6,6 +6,10 @@ class Action:
 		'3' : 'to edit user',
 		'4' : 'to delete user',
 		'5' : 'to show all user',
+
+		'6'	:	'to deposite',
+		'7'	:	'to show deposits',
+
 		'0' : 'to exit'
 	}
 

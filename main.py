@@ -1,5 +1,9 @@
 from model.user import User
+from model.Deposite import Deposite
+
 from controller.account import Account
+from controller.deposite import Deposite
+
 from library.file import File
 from library.action import Action
 
@@ -22,7 +26,7 @@ def main():
 		elif(action == '3'):
 			user = User()
 			user.get()							# input user data
-			Account.edit(user) 		# Create a new account
+			Account.edit(user) 			# Update account
 
 			# Delete Account
 		elif(action =='4'):
@@ -31,6 +35,10 @@ def main():
 			# Show All user
 		elif(action == '5'):
 			print(Account.all())
+
+			# Deposite
+		elif(action == '6'):
+			Deposite.create()
 
 			# Exit
 		else:
