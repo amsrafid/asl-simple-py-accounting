@@ -10,6 +10,9 @@ class Action:
 		'6'	:	'to deposite',
 		'7'	:	'to show deposits',
 
+		'8'	:	'to withdraw',
+		'9'	:	'to show withdraws',
+
 		'0' : 'to exit'
 	}
 

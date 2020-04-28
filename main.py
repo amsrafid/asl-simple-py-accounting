@@ -1,8 +1,8 @@
 from model.user import User
-from model.Deposite import Deposite
 
 from controller.account import Account
 from controller.deposite import Deposite
+from controller.withdraw import Withdraw
 
 from library.file import File
 from library.action import Action
@@ -39,6 +39,18 @@ def main():
 			# Deposite
 		elif(action == '6'):
 			Deposite.create()
+
+			# Show Deposites
+		elif(action == '7'):
+			Deposite.show(input('Enter Account Number: '))
+
+			# Withdraw
+		elif(action == '8'):
+			Withdraw.create()
+
+			# Show Withdraw
+		elif(action == '9'):
+			Withdraw.show(input('Enter Account Number: '))
 
 			# Exit
 		else:
